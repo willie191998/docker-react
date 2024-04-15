@@ -1,0 +1,21 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t wiley19/web-app -f Dockerfile.dev .
+
+scripts:
+  - docker run wiley19/web-app npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-2"
+  app: "docker-web-app"
+  env: "Docker-web-app-env"
+  bucket_name: "elasticbeanstalk-eu-west-2-959400139144"
+  bucket_path: "docker-web-app"
+  on:
+    branch: master
+
+#docker-web-app-env.eba-pmsuxn22.eu-west-2.elasticbeanstalk.com/
