@@ -1,9 +1,15 @@
 FROM node:alpine as builder
+
 WORKDIR '/app'
-COPY ./node_modules .
+
+#COPY ./node_modules .
 COPY ./package.json .
+RUN npm install
+
 COPY . .
+
 RUN npm run build
+
 
 
 FROM nginx:latest
