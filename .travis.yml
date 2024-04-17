@@ -19,7 +19,7 @@ deploy:
   bucket_path: "docker-web-app"
   on:
     branch: master
-  access_key_id: "$AccesskeyID"
+  access_key_id: "$AccessKeyID"
   secret_access_Key: "$SecretAccessKey"
 
 #docker-web-app-env.eba-pmsuxn22.eu-west-2.elasticbeanstalk.com/
