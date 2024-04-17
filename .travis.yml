@@ -18,7 +18,7 @@ deploy:
   bucket_name: "elasticbeanstalk-eu-west-2-959400139144"
   bucket_path: "docker-web-app"
   on:
-    branch: main
+    branch: master
   access_key_id: "$Access key ID"
   secret_access_Key: "$Secret access Key"
 
