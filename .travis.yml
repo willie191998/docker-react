@@ -1,4 +1,6 @@
 sudo: required
+language: generic
+
 services:
   - docker
 
@@ -6,18 +8,18 @@ before_install:
   - docker build -t wiley19/web-app -f Dockerfile.dev .
 
 scripts:
-  - docker run wiley19/web-app npm run test -- --coverage
+  - docker run -e CI=true wiley19/web-app npm run test
 
 deploy:
   provider: elasticbeanstalk
   region: "eu-west-2"
   app: "docker-web-app"
-  env: "Docker-web-app-env"
+  env: "docker-web-app-env"
   bucket_name: "elasticbeanstalk-eu-west-2-959400139144"
   bucket_path: "docker-web-app"
   on:
-    branch: master
-  Access_key_id: "$Access key ID"
-  Secret_access_Key: "$Secret access Key"
+    branch: main
+  access_key_id: "$Access key ID"
+  secret_access_Key: "$Secret access Key"
 
 #docker-web-app-env.eba-pmsuxn22.eu-west-2.elasticbeanstalk.com/
